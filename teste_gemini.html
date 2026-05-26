@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Gemini 2.5 Flash</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .success { color: green; background: #d4edda; padding: 10px; border-radius: 5px; }
+        .error { color: red; background: #f8d7da; padding: 10px; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Teste Gemini 2.5 Flash</h1>
+    
+    <button onclick="testar()">Testar Gemini</button>
+    <div id="resultado"></div>
+
+    <script type="module">
+        import { chamarGemini, testarIA } from './js/supabase.js';
+        
+        window.testar = async function() {
+            const div = document.getElementById('resultado');
+            div.innerHTML = '<p>⏳ Testando conexão com Gemini 2.5 Flash...</p>';
+            
+            const teste = await testarIA();
+            if (teste.sucesso) {
+                div.innerHTML = `
+                    <div class="success">
+                        ✅ <strong>Gemini 2.5 Flash funcionando!</strong>
+                        <pre>${teste.resposta}</pre>
+                        <p>A IA está pronta para uso no seu projeto!</p>
+                    </div>
+                `;
+            } else {
+                div.innerHTML = `
+                    <div class="error">
+                        ❌ <strong>Erro:</strong> ${teste.erro}
+                    </div>
+                `;
+            }
+        };
+    </script>
+</body>
+</html>

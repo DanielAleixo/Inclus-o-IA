@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>InclusãoIA - Mediador</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Painel do Mediador de Apoio</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main>
+        <section style="grid-column: 1 / -1;">
+            <h3>💬 Consultoria Ágil de Manejo Comportamental (ABA)</h3>
+            <hr>
+            <div id="box-chat-mediador">
+                <p style="color: var(--roxo-foco);"><strong>InclusãoIA (Suporte Escolar):</strong> Relate episódios de desorganização, crises sensoriais ou comportamentais ocorridas em sala de aula para receber intervenções imediatas recomendadas pela metodologia ABA.</p>
+            </div>
+            <form id="form-busca-inteligente" style="display: flex; gap: 10px; margin-top: 15px;">
+                <input type="text" id="query-mediador" placeholder="Descreva aqui a crise sensorial ou comportamento de desorganização..." required>
+                <button type="submit" id="btn-mediador-ia">Consultar</button>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/mediador.js"></script>
+</body>
+</html>

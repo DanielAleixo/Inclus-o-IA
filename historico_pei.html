@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>InclusãoIA - Histórico de PEIs</title>
+    <style>
+        .pei-card {
+            border: 1px solid var(--borda);
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .pei-card:hover {
+            box-shadow: var(--sombra);
+            transform: translateY(-2px);
+        }
+        .pei-conteudo {
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            max-height: 250px;
+            overflow-y: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Arquivo de Planos Individuais (PEI)</h1>
+        <nav>
+            <a href="professor.html">← Voltar ao Painel do Professor</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>Documentos Armazenados (Consulta Oficial)</h2>
+            <div id="lista-peis-db">
+                <p>Realizando leitura do banco de dados...</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/historico_pei.js"></script>
+</body>
+</html>

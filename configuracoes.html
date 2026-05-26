@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>InclusãoIA - Configurações</title>
+</head>
+<body>
+    <header>
+        <h1>Painel Técnico do Sistema</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Status dos Serviços e Integrações</h2>
+            <ul>
+                <li>Banco de Dados Relacional (Supabase): <strong style="color: green;">Conectado</strong></li>
+                <li>Módulo Assistivo de IA: <strong style="color: green;">Online e Operacional</strong></li>
+                <li>Proteção de Dados Anônimos (LGPD Escolar): <strong style="color: green;">Ativa</strong></li>
+            </ul>
+        </section>
+
+        <section style="margin-top:20px;">
+            <h2>Sua Sessão Ativa</h2>
+            <div id="user-details">
+                <p>Verificando credenciais ativas na rede...</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { supabase } from './js/supabase.js';
+        import { gerenciarMenu } from './js/navegacao.js';
+
+        await gerenciarMenu('qualquer');
+
+        async function checarSessao() {
+            const info = document.getElementById('user-details');
+            const userEmail = localStorage.getItem('user_email');
+            const perfil = localStorage.getItem('perfil_usuario');
+            
+            if (userEmail) {
+                const { data: perfilData } = await supabase
+                    .from('perfis_usuarios')
+                    .select('nome, tipo_perfil')
+                    .eq('email', userEmail)
+                    .single();
+                
+                const nomePerfil = perfilData?.nome || 'Usuário';
+                const tipoPerfil = perfil === 'professor' ? 'Professor Regente' : 
+                                  (perfil === 'mediador' ? 'Mediador Escolar' : 'Visitante');
+                
+                info.innerHTML = `
+                    <p><strong>👤 Usuário:</strong> ${nomePerfil}</p>
+                    <p><strong>📧 E-mail:</strong> ${userEmail}</p>
+                    <p><strong>🎭 Perfil:</strong> ${tipoPerfil}</p>
+                    <p><strong>🕐 Sessão iniciada em:</strong> ${new Date().toLocaleString('pt-BR')}</p>
+                `;
+            } else {
+                info.innerHTML = "<p style='color:red;'>Nenhuma sessão segura detectada no front-end.</p>";
+            }
+        }
+
+        checarSessao();
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>InclusãoIA - Consulta Exclusiva</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        header {
+            flex-shrink: 0;
+        }
+        
+        main {
+            flex: 1;
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: calc(100vh - 180px);
+        }
+        
+        section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #caixa-mensagens-recebidas {
+            flex: 1;
+            min-height: 500px;
+            max-height: none;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            main {
+                min-height: calc(100vh - 150px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="tit-consulta">Caixa de Entrada de Relatos</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main>
+        <section style="grid-column: 1 / -1;">
+            <h3 id="sub-consulta">Verificando correspondências...</h3>
+            <hr>
+            <div id="caixa-mensagens-recebidas">Buscando mensagens no banco de dados...</div>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/insights.js"></script>
+</body>
+</html>

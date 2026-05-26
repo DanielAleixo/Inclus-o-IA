@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>InclusãoIA - Comunidade</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        header {
+            flex-shrink: 0;
+        }
+        
+        main {
+            flex: 1;
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: calc(100vh - 180px);
+        }
+        
+        section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #mural-posts-reddit {
+            flex: 1;
+            min-height: 500px;
+            max-height: none;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            main {
+                min-height: calc(100vh - 150px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mural da Comunidade — InclusãoIA</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+        <section>
+            <h3>🌍 Feed Inclusivo</h3>
+            <hr>
+            <div id="mural-posts-reddit">Carregando postagens públicas...</div>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/comunidade.js"></script>
+</body>
+</html>

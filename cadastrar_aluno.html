@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>InclusãoIA - Cadastrar Aluno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: var(--bg-principal);
+        }
+        header {
+            flex-shrink: 0;
+            margin-bottom: 24px;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: var(--raio);
+            padding: 32px;
+            box-shadow: var(--sombra);
+            border: 1px solid var(--borda);
+        }
+        .form-container h2 {
+            color: var(--texto-escuro);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--texto-suave);
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--borda);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transicao);
+        }
+        input:focus, select:focus {
+            border-color: var(--azul-suporte);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: var(--azul-suporte);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+        button:hover {
+            background: var(--roxo-foco);
+            transform: translateY(-2px);
+        }
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--azul-suporte);
+            text-decoration: none;
+        }
+        .voltar:hover {
+            text-decoration: underline;
+        }
+        .status-msg {
+            margin-top: 16px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📝 Cadastrar Novo Estudante (Anonimizado)</h1>
+        <nav>
+            <a href="professor.html">← Voltar ao Painel do Professor</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>✨ Dados do Estudante</h2>
+            <form id="aluno-form">
+                <div class="form-group">
+                    <label for="codigo_identificador">📌 Código Identificador:</label>
+                    <input type="text" id="codigo_identificador" required placeholder="Ex: Aluno #001 - Escola X">
+                </div>
+                <div class="form-group">
+                    <label for="nivel_suporte">🎯 Nível de Suporte TEA:</label>
+                    <select id="nivel_suporte" required>
+                        <option value="Nível 1">Nível 1 - Requer suporte leve</option>
+                        <option value="Nível 2">Nível 2 - Requer suporte substancial</option>
+                        <option value="Nível 3">Nível 3 - Requer suporte muito substancial</option>
+                        <option value="Outro">Outras Neurodivergências</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hiperfoco">🎨 Interesses / Hiperfoco:</label>
+                    <input type="text" id="hiperfoco" placeholder="Ex: Dinossauros, Carros, Sistema Solar">
+                </div>
+                <button type="submit">💾 Salvar Aluno no Supabase</button>
+            </form>
+            <p id="status-msg" class="status-msg"></p>
+            <a href="professor.html" class="voltar">← Voltar para o Painel do Professor</a>
+        </div>
+    </main>
+
+    <script type="module" src="js/pages/cadastrar_aluno.js"></script>
+</body>
+</html>

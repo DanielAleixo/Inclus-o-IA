@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>InclusãoIA - Painel do Professor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pei-container {
+            min-height: 450px;
+            max-height: 550px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .chat-container {
+            height: 380px;
+            overflow-y: auto;
+        }
+        .botoes-download {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .btn-word {
+            background: #2d6a4f;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-word:hover {
+            background: #1b4d3e;
+            transform: translateY(-2px);
+        }
+        .btn-txt {
+            background: #1e6091;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-txt:hover {
+            background: #0f4a6e;
+            transform: translateY(-2px);
+        }
+        .btn-ver {
+            background: #6c757d;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-ver:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+        .btn-salvar {
+            background: var(--gradiente-arcoiris);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-salvar:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Painel do Professor Regente</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main style="display: flex; gap: 24px; align-items: stretch; min-height: 700px;">
+        <section style="flex: 1; display: flex; flex-direction: column;">
+            <h3>🤖 Chat com I.A. (Análise de Comportamento)</h3>
+            <div style="margin-bottom: 12px;">
+                <label for="aluno-select">Selecione o Aluno Alvo:</label>
+                <select id="aluno-select" required>
+                    <option value="">-- Carregando estudantes... --</option>
+                </select>
+            </div>
+            <div id="historico-chat" class="chat-container" style="border: 2px solid var(--borda); border-radius: 8px; padding: 16px; background: #f8fafc;">
+                <p style="color: var(--azul-suporte);"><strong>InclusãoIA:</strong> Pronto para estruturar diretrizes de PEI. Selecione um estudante abaixo para começar.</p>
+            </div>
+            <form id="form-chat-ia" style="display: flex; gap: 10px; margin-top: 15px;">
+                <input type="text" id="mensagem-usuario" placeholder="Insira o relato pedagógico ou comportamental..." required style="flex: 1; padding: 12px; border-radius: 8px; border: 2px solid var(--borda);">
+                <button type="submit" id="btn-enviar" style="padding: 12px 24px; border-radius: 8px; font-weight: 600;">Analisar</button>
+            </form>
+        </section>
+
+        <section style="flex: 1; display: flex; flex-direction: column;">
+            <h3>📋 Rascunho Dinâmico do P.E.I.</h3>
+            <hr>
+            <div id="visualizacao-pei-live" class="pei-container" style="background: var(--gradiente-suave); border: 2px solid #bae6fd; border-radius: 8px; padding: 20px; font-size: 14px; line-height: 1.6; word-wrap: break-word; white-space: normal;">
+                Aguardando interações do chat ao lado para gerar o plano técnico...
+            </div>
+            <br>
+            <div class="botoes-download">
+                <button id="btn-gravar-resultado" class="btn-salvar" style="display: none;">📌 Salvar Prontuário no Banco</button>
+                <button id="btn-ver-completo" class="btn-ver" style="display: none;">🔍 Ver Conteúdo Completo</button>
+                <button id="btn-download-docx" class="btn-word" style="display: none;">📥 Baixar como Word (.doc)</button>
+                <button id="btn-download-txt" class="btn-txt" style="display: none;">📄 Baixar como Texto (.txt)</button>
+            </div>
+            <p id="status-db" style="margin-top: 10px; text-align: center;"></p>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/professor.js"></script>
+</body>
+</html>

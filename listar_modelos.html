@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Modelos Gemini</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>📋 Listando Modelos Disponíveis</h1>
+    <button onclick="listarModelos()">Listar Modelos</button>
+    <pre id="resultado"></pre>
+
+    <script>
+        const API_KEY = 'AIzaSyDKRZFkysNrjL_kFXGshMEMyRiv-ndeRbs';
+        
+        async function listarModelos() {
+            const div = document.getElementById('resultado');
+            div.textContent = '⏳ Carregando...';
+            
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
+                
+                if (dados.models) {
+                    div.innerHTML = JSON.stringify(dados.models.map(m => m.name), null, 2);
+                    div.innerHTML += '\n\n✅ Use um dos modelos acima no código';
+                } else {
+                    div.innerHTML = JSON.stringify(dados, null, 2);
+                }
+            } catch (erro) {
+                div.innerHTML = `❌ Erro: ${erro.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

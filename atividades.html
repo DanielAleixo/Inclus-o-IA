@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>InclusãoIA - Relatar Ocorrência</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        header {
+            flex-shrink: 0;
+        }
+        
+        main {
+            flex: 1;
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: calc(100vh - 180px);
+        }
+        
+        section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        textarea {
+            flex: 1;
+            min-height: 200px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            main {
+                min-height: calc(100vh - 150px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="tit-atividades">Registrar Relato</h1>
+        <nav id="menu-navegacao"></nav>
+    </header>
+
+    <main>
+        <section style="grid-column: 1 / -1;">
+            <h3 id="sub-atividades">Identificação de fluxo...</h3>
+            <hr>
+            <form id="form-envio-direcionado">
+                <label>Identificador / Código do Aluno:</label>
+                <input type="text" id="id-aluno" placeholder="Ex: ALUNO-TEA-A" required><br><br>
+                <label>Relato de Atividades e Ocorrências:</label>
+                <textarea id="corpo-relato" rows="5" placeholder="Descreva os acontecimentos observados..." required></textarea><br><br>
+                <button type="submit">Emitir Documento</button>
+            </form>
+            <p id="feedback-relato"></p>
+        </section>
+    </main>
+
+    <script type="module" src="js/pages/atividades.js"></script>
+</body>
+</html>
