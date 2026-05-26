@@ -1,3 +1,6 @@
+// EXEMPLO - Copie este conteúdo para supabase.js
+// e adicione sua chave API localmente
+
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
 
 const supabaseUrl = 'https://zijftchlcklcqjaelwed.supabase.co';
@@ -5,7 +8,9 @@ const supabaseKey = 'sb_publishable_Idxi5EPot74T54_5DqJz8g_evYzUSkL';
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-const GEMINI_API_KEY = 'AIzaSyDKRZFkysNrjL_kFXGshMEMyRiv-ndeRbs';
+// ⚠️ IMPORTANTE: Coloque sua chave REAL apenas no arquivo supabase.js
+// Este é apenas um exemplo!
+const GEMINI_API_KEY = 'COLE_SUA_CHAVE_AQUI';
 const MODELO = 'gemini-2.5-flash';
 
 export async function chamarGemini(prompt, temperatura = 0.7) {
@@ -24,8 +29,6 @@ export async function chamarGemini(prompt, temperatura = 0.7) {
     };
     
     try {
-        console.log(`Chamando Gemini API (modelo: ${MODELO})...`);
-        
         const resposta = await fetch(url, {
             method: 'POST',
             headers: {
@@ -36,27 +39,11 @@ export async function chamarGemini(prompt, temperatura = 0.7) {
         
         if (!resposta.ok) {
             const erro = await resposta.json();
-            console.error('Erro detalhado:', erro);
-            
-            let mensagemErro = '';
-            if (erro.error && erro.error.message) {
-                mensagemErro = erro.error.message;
-            } else {
-                mensagemErro = `HTTP ${resposta.status}: ${resposta.statusText}`;
-            }
-            
-            throw new Error(mensagemErro);
+            throw new Error(erro.error?.message || `Erro ${resposta.status}`);
         }
         
         const dados = await resposta.json();
-        
-        if (dados.candidates && dados.candidates[0] && dados.candidates[0].content) {
-            const textoCompleto = dados.candidates[0].content.parts[0].text;
-            console.log(`Resposta recebida com aproximadamente ${textoCompleto.length} caracteres`);
-            return textoCompleto;
-        } else {
-            throw new Error('Resposta inválida da API');
-        }
+        return dados.candidates[0].content.parts[0].text;
         
     } catch (erro) {
         console.error('Erro Gemini:', erro);
@@ -67,10 +54,8 @@ export async function chamarGemini(prompt, temperatura = 0.7) {
 export async function testarIA() {
     try {
         const resposta = await chamarGemini("Diga 'Gemini funcionando' em português", 0.5);
-        console.log('Teste bem sucedido:', resposta);
         return { sucesso: true, resposta: resposta.substring(0, 100) };
     } catch (erro) {
-        console.error('Teste falhou:', erro);
         return { sucesso: false, erro: erro.message };
     }
 }

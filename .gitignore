@@ -1,0 +1,58 @@
+# ============================================
+# CHAVES API E DADOS SENSÍVEIS
+# ============================================
+js/supabase.js
+.env
+.env.local
+*.key
+*.pem
+
+# ============================================
+# DEPENDÊNCIAS
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ============================================
+# ARQUIVOS DO SISTEMA
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ============================================
+# EDITORES E IDEs
+# ============================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ============================================
+# LOGS E TEMPORÁRIOS
+# ============================================
+logs/
+*.log
+tmp/
+temp/
+*.tmp
+
+# ============================================
+# ARQUIVOS DO PROJETO (OPCIONAL)
+# ============================================
+# Se quiser ignorar esses também:
+# teste_gemini.html
+# listar_modelos.html
